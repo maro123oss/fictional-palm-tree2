@@ -1,32 +1,37 @@
 ```css
-/* ==================================================
+/* =========================================================
    MARWAN PORTFOLIO
-   Modern CSS — no JavaScript
-================================================== */
+   Dark / Modern / Responsive
+========================================================= */
 
 
-/* ---------- Variables ---------- */
+/* =========================================================
+   1. COLORS
+========================================================= */
 
 :root {
-    --background: #050507;
-    --surface: #0c0c10;
-    --surface-2: #121218;
 
-    --text: #f7f7fa;
-    --muted: #9898a5;
+    --background: #050505;
+    --surface: #0b0b0d;
+    --surface-light: #111114;
+
+    --text: #f5f5f5;
+    --muted: #8f8f99;
 
     --accent: #8b5cf6;
     --accent-light: #a78bfa;
 
-    --border: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.08);
 
-    --glow: rgba(139, 92, 246, 0.25);
+    --glow: rgba(139, 92, 246, 0.20);
 
-    --width: 1100px;
+    --width: 1120px;
 }
 
 
-/* ---------- Reset ---------- */
+/* =========================================================
+   2. RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -39,32 +44,19 @@ html {
 }
 
 body {
+
     min-height: 100vh;
+
+    background: var(--background);
 
     color: var(--text);
 
     font-family:
         Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
         Arial,
         sans-serif;
 
     line-height: 1.6;
-
-    background:
-        radial-gradient(
-            circle at 80% 0%,
-            rgba(139, 92, 246, 0.16),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 10% 30%,
-            rgba(99, 102, 241, 0.08),
-            transparent 25%
-        ),
-        var(--background);
 
     overflow-x: hidden;
 }
@@ -75,71 +67,59 @@ a {
 }
 
 
-/* ---------- Subtle grid background ---------- */
+/* =========================================================
+   3. BACKGROUND
+========================================================= */
 
 body::before {
+
     content: "";
 
     position: fixed;
-    inset: 0;
+
+    top: -250px;
+    right: -200px;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background: var(--glow);
+
+    filter: blur(150px);
 
     z-index: -1;
-
-    background-image:
-        linear-gradient(
-            rgba(255, 255, 255, 0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 50px 50px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 70%
-        );
 
     pointer-events: none;
 }
 
 
-/* ==================================================
-   NAVIGATION
-================================================== */
-
-header {
-    position: sticky;
-    top: 0;
-
-    z-index: 100;
-
-    backdrop-filter: blur(18px);
-
-    background: rgba(5, 5, 7, 0.72);
-
-    border-bottom: 1px solid var(--border);
-}
+/* =========================================================
+   4. NAVBAR
+========================================================= */
 
 .navbar {
+
     width: min(var(--width), 90%);
 
-    height: 75px;
+    height: 80px;
 
     margin: auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
+
+/* Logo */
+
 .logo {
-    font-size: 1.35rem;
+
+    font-size: 1.4rem;
 
     font-weight: 800;
 
@@ -150,13 +130,20 @@ header {
     color: var(--accent-light);
 }
 
-.nav-links {
+
+/* Navigation links */
+
+nav {
+
     display: flex;
 
-    gap: 32px;
+    align-items: center;
+
+    gap: 35px;
 }
 
-.nav-links a {
+nav a {
+
     position: relative;
 
     color: var(--muted);
@@ -166,47 +153,51 @@ header {
     transition: 0.25s ease;
 }
 
-.nav-links a::after {
+nav a:hover {
+    color: var(--text);
+}
+
+
+/* Little line underneath links */
+
+nav a::after {
+
     content: "";
 
     position: absolute;
 
     left: 0;
-    bottom: -7px;
+    bottom: -8px;
 
     width: 0;
     height: 2px;
-
-    border-radius: 10px;
 
     background: var(--accent);
 
     transition: 0.25s ease;
 }
 
-.nav-links a:hover {
-    color: var(--text);
-}
-
-.nav-links a:hover::after {
+nav a:hover::after {
     width: 100%;
 }
 
 
-/* ==================================================
-   HERO
-================================================== */
+/* =========================================================
+   5. HERO
+========================================================= */
 
 .hero {
+
     width: min(var(--width), 90%);
 
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 80px);
 
     margin: auto;
 
     display: grid;
 
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns:
+        1.1fr 0.9fr;
 
     align-items: center;
 
@@ -216,14 +207,15 @@ header {
 }
 
 
-/* Hero text */
+/* Small title */
 
-.small-title {
-    display: inline-flex;
+.eyebrow {
+
+    display: flex;
 
     align-items: center;
 
-    gap: 10px;
+    gap: 12px;
 
     color: var(--accent-light);
 
@@ -234,19 +226,27 @@ header {
     letter-spacing: 3px;
 }
 
-.small-title::before {
+.eyebrow::before {
+
     content: "";
 
-    width: 25px;
+    width: 28px;
     height: 2px;
 
     background: var(--accent);
 }
 
-.hero h1 {
-    margin-top: 20px;
 
-    font-size: clamp(4rem, 8vw, 7rem);
+/* Main heading */
+
+.hero h1 {
+
+    max-width: 750px;
+
+    margin-top: 22px;
+
+    font-size:
+        clamp(4rem, 8vw, 7rem);
 
     line-height: 0.92;
 
@@ -254,14 +254,14 @@ header {
 }
 
 .hero h1 span {
+
     display: block;
 
     background:
         linear-gradient(
             100deg,
-            #ffffff 20%,
-            var(--accent-light) 70%,
-            var(--accent) 100%
+            #ffffff,
+            var(--accent-light)
         );
 
     -webkit-background-clip: text;
@@ -270,32 +270,27 @@ header {
     color: transparent;
 }
 
-.hero h2 {
+
+/* Hero description */
+
+.hero-text {
+
+    max-width: 560px;
+
     margin-top: 25px;
 
     color: var(--muted);
 
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-
-    font-weight: 500;
-}
-
-.hero-text > p:not(.small-title) {
-    max-width: 580px;
-
-    margin-top: 20px;
-
-    color: var(--muted);
-
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 
-/* ==================================================
-   BUTTONS
-================================================== */
+/* =========================================================
+   6. BUTTONS
+========================================================= */
 
-.buttons {
+.hero-buttons {
+
     display: flex;
 
     gap: 12px;
@@ -304,53 +299,47 @@ header {
 }
 
 .button {
-    position: relative;
 
     display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    min-width: 125px;
-
     padding: 13px 22px;
 
+    border-radius: 10px;
+
     border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    background: rgba(255, 255, 255, 0.025);
 
     font-size: 0.9rem;
 
     font-weight: 700;
 
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .button:hover {
+
     transform: translateY(-4px);
 
-    border-color: rgba(167, 139, 250, 0.5);
-
-    background: rgba(255, 255, 255, 0.06);
+    border-color:
+        rgba(167, 139, 250, 0.5);
 }
 
-.main-button {
-    border-color: var(--accent);
+
+/* Purple button */
+
+.primary {
 
     background: var(--accent);
+
+    border-color: var(--accent);
 
     box-shadow:
         0 10px 35px var(--glow);
 }
 
-.main-button:hover {
-    border-color: var(--accent-light);
+.primary:hover {
 
     background: var(--accent-light);
 
@@ -359,79 +348,122 @@ header {
 }
 
 
-/* ==================================================
-   CODE CARD
-================================================== */
+/* Dark button */
 
-.code-card {
-    position: relative;
+.secondary {
 
-    border: 1px solid var(--border);
+    background:
+        rgba(255, 255, 255, 0.03);
+}
 
-    border-radius: 24px;
+
+/* =========================================================
+   7. CODE WINDOW
+========================================================= */
+
+.code-window {
+
+    border:
+
+        1px solid
+        var(--border);
+
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.07),
-            rgba(255, 255, 255, 0.015)
+            rgba(255,255,255,0.06),
+            rgba(255,255,255,0.015)
         );
 
     box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.55),
-        0 0 70px rgba(139, 92, 246, 0.08);
+        0 30px 100px
+        rgba(0, 0, 0, 0.5);
 
     overflow: hidden;
 
-    transform: rotate(1deg);
-
-    transition: 0.4s ease;
+    transition: 0.35s ease;
 }
 
-.code-card:hover {
-    transform:
-        rotate(0deg)
-        translateY(-8px);
+.code-window:hover {
+
+    transform: translateY(-7px);
 
     box-shadow:
-        0 40px 120px rgba(0, 0, 0, 0.6),
-        0 0 90px rgba(139, 92, 246, 0.14);
+        0 40px 120px
+        rgba(0, 0, 0, 0.6),
+
+        0 0 60px
+        rgba(139, 92, 246, 0.08);
 }
 
-.card-header {
+
+/* Window top */
+
+.window-top {
+
+    height: 52px;
+
+    padding: 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+.window-top p {
+
+    color: #666670;
+
+    font-family: monospace;
+
+    font-size: 0.75rem;
+}
+
+
+/* Window dots */
+
+.window-dots {
+
     display: flex;
 
     gap: 7px;
-
-    padding: 17px 20px;
-
-    border-bottom: 1px solid var(--border);
-
-    background: rgba(0, 0, 0, 0.15);
 }
 
-.card-header span {
-    width: 11px;
-    height: 11px;
+.window-dots span {
+
+    width: 10px;
+    height: 10px;
 
     border-radius: 50%;
 
-    background: #45454f;
+    background: #44444c;
 }
 
-.card-header span:first-child {
+.window-dots span:first-child {
     background: #ff6b6b;
 }
 
-.card-header span:nth-child(2) {
+.window-dots span:nth-child(2) {
     background: #ffd166;
 }
 
-.card-header span:nth-child(3) {
+.window-dots span:last-child {
     background: #4ade80;
 }
 
-.code {
+
+/* Code */
+
+.code-content {
+
     padding: 35px;
 
     min-height: 280px;
@@ -442,78 +474,116 @@ header {
 
     justify-content: center;
 
-    font-family: "Courier New", monospace;
+    font-family: monospace;
 
-    font-size: 0.95rem;
+    font-size: 0.88rem;
 }
 
-.code p {
-    margin: 9px 0;
+.code-content p {
 
-    color: #777783;
-}
+    margin: 8px 0;
 
-.code b {
-    color: var(--accent-light);
-}
-
-.code strong {
-    color: #f5f5f7;
-
-    font-weight: 500;
+    color: #777781;
 }
 
 .indent {
-    padding-left: 28px;
+    padding-left: 25px;
 }
 
 
-/* ==================================================
-   SECTIONS
-================================================== */
+/* Code colors */
+
+.purple {
+    color: var(--accent-light);
+}
+
+.blue {
+    color: #60a5fa;
+}
+
+.green {
+    color: #86efac;
+}
+
+
+/* =========================================================
+   8. SECTIONS
+========================================================= */
 
 .section {
+
     width: min(var(--width), 90%);
 
     margin: 160px auto;
 }
 
-.section-label {
+
+/* Section heading */
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    margin-bottom: 60px;
+}
+
+.section-number {
+
     color: var(--accent-light);
 
-    font-size: 0.72rem;
+    font-family: monospace;
+
+    font-size: 0.8rem;
+
+    padding-top: 7px;
+}
+
+.section-label {
+
+    color: var(--accent-light);
+
+    font-size: 0.7rem;
 
     font-weight: 800;
 
     letter-spacing: 3px;
 }
 
-.section-title {
-    margin-top: 10px;
+.section-heading h2 {
 
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-top: 8px;
 
-    letter-spacing: -2px;
+    font-size:
+        clamp(2.5rem, 5vw, 4rem);
 
     line-height: 1;
+
+    letter-spacing: -2px;
 }
 
 
-/* ==================================================
-   ABOUT
-================================================== */
+/* =========================================================
+   9. ABOUT
+========================================================= */
 
-.about {
+.about-grid {
+
     display: grid;
 
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns:
+        1.2fr 0.8fr;
 
     gap: 80px;
 
-    margin-top: 60px;
+    align-items: center;
 }
 
-.about p {
+.about-text p {
+
     max-width: 650px;
 
     color: var(--muted);
@@ -521,140 +591,178 @@ header {
     font-size: 1.05rem;
 }
 
-.about p + p {
+.about-text p + p {
     margin-top: 20px;
 }
 
-.about-box {
-    display: grid;
 
-    grid-template-columns: 1fr 1fr;
+/* About card */
 
-    gap: 12px;
-}
+.about-card {
 
-.about-box div {
-    min-height: 130px;
+    padding: 35px;
 
-    padding: 25px;
+    border:
 
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.055),
-            rgba(255, 255, 255, 0.015)
-        );
-
-    transition: 0.3s ease;
-}
-
-.about-box div:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        rgba(139, 92, 246, 0.45);
-
-    background:
-        rgba(139, 92, 246, 0.08);
-}
-
-.about-box strong {
-    color: var(--accent-light);
-
-    font-size: 1.8rem;
-}
-
-.about-box span {
-    color: var(--muted);
-
-    font-size: 0.78rem;
-}
-
-
-/* ==================================================
-   SKILLS
-================================================== */
-
-.skills {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-
-    margin-top: 60px;
-}
-
-.skill {
-    position: relative;
-
-    min-height: 245px;
-
-    padding: 28px;
-
-    border: 1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.055),
-            rgba(255, 255, 255, 0.015)
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.015)
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.3);
+}
+
+.about-card-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: var(--muted);
+
+    font-size: 0.75rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.status {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow:
+        0 0 12px
+        rgba(74, 222, 128, 0.7);
+}
+
+.about-card h3 {
+
+    margin-top: 50px;
+
+    font-size: 1.7rem;
+}
+
+.about-card p {
+
+    margin-top: 7px;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   10. SKILLS
+========================================================= */
+
+.skills-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+/* Skill card */
+
+.skill-card {
+
+    position: relative;
+
+    min-height: 250px;
+
+    padding: 30px;
+
+    border:
+
+        1px solid
+        var(--border);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.01)
         );
 
     overflow: hidden;
 
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
-.skill::before {
+
+/* Glow inside cards */
+
+.skill-card::before {
+
     content: "";
 
     position: absolute;
 
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
 
-    right: -60px;
-    bottom: -60px;
+    right: -70px;
+    bottom: -70px;
 
     border-radius: 50%;
 
     background: var(--accent);
 
-    filter: blur(60px);
+    filter: blur(65px);
 
     opacity: 0;
 
     transition: 0.4s ease;
 }
 
-.skill:hover {
-    transform: translateY(-8px);
+.skill-card:hover {
+
+    transform: translateY(-7px);
 
     border-color:
         rgba(139, 92, 246, 0.45);
 }
 
-.skill:hover::before {
-    opacity: 0.35;
+.skill-card:hover::before {
+    opacity: 0.3;
 }
 
-.skill > span {
+
+/* Skill number + icon */
+
+.skill-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.skill-number {
+
     color: var(--accent-light);
 
     font-family: monospace;
@@ -662,28 +770,61 @@ header {
     font-size: 0.75rem;
 }
 
-.skill h3 {
-    margin-top: 70px;
+.skill-icon {
 
-    font-size: 1.3rem;
+    width: 42px;
+    height: 42px;
 
-    letter-spacing: -0.5px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+
+        1px solid
+        var(--border);
+
+    border-radius: 10px;
+
+    color: var(--accent-light);
+
+    background:
+        rgba(139, 92, 246, 0.08);
+
+    font-family: monospace;
+
+    font-weight: bold;
 }
 
-.skill p {
+
+/* Skill text */
+
+.skill-card h3 {
+
+    margin-top: 55px;
+
+    font-size: 1.4rem;
+}
+
+.skill-card p {
+
+    max-width: 420px;
+
     margin-top: 8px;
 
     color: var(--muted);
 
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
 
-/* ==================================================
-   CONTACT
-================================================== */
+/* =========================================================
+   11. CONTACT
+========================================================= */
 
 .contact {
+
     width: min(850px, 90%);
 
     margin: 190px auto;
@@ -692,29 +833,40 @@ header {
 }
 
 .contact h2 {
+
     margin-top: 15px;
 
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size:
+        clamp(3.5rem, 8vw, 6rem);
 
     line-height: 0.95;
 
     letter-spacing: -5px;
 }
 
+.contact h2 span {
+
+    display: block;
+
+    color: var(--accent-light);
+}
+
 .contact > p:not(.section-label) {
+
+    max-width: 500px;
+
     margin: 25px auto 35px;
 
     color: var(--muted);
-
-    font-size: 1rem;
 }
 
 
-/* ==================================================
-   FOOTER
-================================================== */
+/* =========================================================
+   12. FOOTER
+========================================================= */
 
 footer {
+
     width: min(var(--width), 90%);
 
     margin: auto;
@@ -723,9 +875,13 @@ footer {
 
     display: flex;
 
+    align-items: center;
+
     justify-content: space-between;
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid
+        var(--border);
 
     color: var(--muted);
 
@@ -733,6 +889,7 @@ footer {
 }
 
 footer a {
+
     color: var(--text);
 
     transition: 0.25s ease;
@@ -743,13 +900,14 @@ footer a:hover {
 }
 
 
-/* ==================================================
-   TABLET
-================================================== */
+/* =========================================================
+   13. TABLET
+========================================================= */
 
 @media (max-width: 900px) {
 
     .hero {
+
         grid-template-columns: 1fr;
 
         gap: 60px;
@@ -757,7 +915,8 @@ footer a:hover {
         padding-top: 100px;
     }
 
-    .code-card {
+    .code-window {
+
         max-width: 650px;
 
         width: 100%;
@@ -765,78 +924,95 @@ footer a:hover {
         margin: auto;
     }
 
-    .about {
-        grid-template-columns: 1fr;
-    }
+    .about-grid {
 
-    .skills {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+
+        gap: 40px;
     }
 }
 
 
-/* ==================================================
-   MOBILE
-================================================== */
+/* =========================================================
+   14. PHONE
+========================================================= */
 
 @media (max-width: 600px) {
 
     .navbar {
-        height: 65px;
+
+        height: 70px;
     }
 
-    .nav-links {
-        gap: 15px;
+    nav {
+
+        gap: 16px;
     }
 
-    .nav-links a {
+    nav a {
+
         font-size: 0.75rem;
     }
 
+
     .hero {
-        padding-top: 70px;
+
+        padding: 70px 0;
     }
 
     .hero h1 {
+
         font-size: 4rem;
 
         letter-spacing: -4px;
     }
 
-    .hero h2 {
-        font-size: 1.15rem;
-    }
 
-    .buttons {
+    .hero-buttons {
+
         flex-direction: column;
     }
 
     .button {
+
         width: 100%;
     }
 
+
     .section {
+
         margin: 110px auto;
     }
 
-    .skills {
+
+    .section-heading {
+
+        gap: 15px;
+    }
+
+
+    .skills-grid {
+
         grid-template-columns: 1fr;
     }
 
-    .about-box {
-        grid-template-columns: 1fr 1fr;
-    }
 
     .contact {
+
         margin: 130px auto;
     }
 
     .contact h2 {
+
         letter-spacing: -3px;
     }
 
+
     footer {
+
         flex-direction: column;
+
+        align-items: flex-start;
 
         gap: 12px;
     }
